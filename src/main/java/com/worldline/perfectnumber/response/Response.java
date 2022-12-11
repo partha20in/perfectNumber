@@ -2,9 +2,9 @@ package com.worldline.perfectnumber.response;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 /**
  * This is a Response class which set the status code and response message for the validatePerfectNumber REST API call
- *
  **/
 public class Response<T> extends ResponseEntity<T> {
 
@@ -63,14 +63,11 @@ public class Response<T> extends ResponseEntity<T> {
         return response;
     }
 
-    public Response<String> internalServerErrors() {
+    public static Response<String> internalServerErrors() {
         Response<String> response = new Response<String>(INTERNAL_SERVER_ERROR_MESSAGE, HttpStatus.INTERNAL_SERVER_ERROR);
         response.setStatus(Status.INTERNAL_SERVER_ERROR);
         return response;
     }
-
-
-
 
 
     public enum Status {

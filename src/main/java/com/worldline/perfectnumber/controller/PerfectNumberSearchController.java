@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * This is a Controller class containing PerfectNumber finder REST API  .
@@ -65,7 +66,7 @@ public class PerfectNumberSearchController {
     }
 
     /**
-     * Validate Perfect number within range REST API
+     * Validate Perfect number within ranges REST API
      *
      * @param startNumber
      * @param endNumber
@@ -88,8 +89,8 @@ public class PerfectNumberSearchController {
             Integer startNum = Integer.parseInt(startNumber);
             Integer endNum = Integer.parseInt(endNumber);
             Optional<List<Integer>> listNum = perfectNumberSearchService.FindPerfectNumberWithinRange(startNum, endNum);
-            List finalList=listNum.stream().collect(Collectors.toList());
-            String listNumbers="List of perfect Numbers are"+finalList;
+            List<Integer> finalList = listNum.stream().flatMap(list -> list.stream()).collect(Collectors.toList());
+            String listNumbers = "List of perfect Numbers are" + finalList;
             response = Response.okStatus(listNumbers);
         }
 
