@@ -4,25 +4,31 @@ plugins {
 	id 'java'
 }
 
-group = 'com.example'
+group = 'com.worldline'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+sourceCompatibility = "1.9"
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.0.2'
 	compile group: 'org.springframework', name: 'spring-beans', version: '5.2.5.RELEASE'
 	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+	implementation("org.springframework.boot:spring-boot-starter-web") {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+	}
+	implementation "org.springframework.boot:spring-boot-starter-jetty"
 	
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+
 }
 
 test {
 	useJUnitPlatform()
 }
+targetCompatibility = JavaVersion.VERSION_1_9
