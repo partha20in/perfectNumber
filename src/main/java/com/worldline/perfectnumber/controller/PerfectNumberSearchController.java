@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * This is a Controller class containing PerfectNumber finder REST API  .
+ * This is a Controller class containing PerfectNumber finder REST API's  .
  **/
 @RestController
 @RequestMapping("/app")
@@ -39,7 +39,7 @@ public class PerfectNumberSearchController {
      */
     @GetMapping("/api/v1/perfectNumbers/{number}")
     public Response<String> validateNumber(@PathVariable("number") String number) {
-        LOGGER.debug("In sendEmail method in PerfectNumberSearchController");
+        LOGGER.debug("In validateNumber method in PerfectNumberSearchController");
 
         Response<String> response = null;
 
@@ -74,7 +74,7 @@ public class PerfectNumberSearchController {
      */
     @GetMapping("/api/v1/perfectNumbersRange/startNumber/{startnumber}/endNumber/{endNumber}")
     public Response<String> validateNumberRange(@PathVariable("startnumber") String startNumber, @PathVariable("endNumber") String endNumber) {
-        LOGGER.debug("In sendEmail method in PerfectNumberSearchController");
+        LOGGER.debug("In validateNumberRange method in PerfectNumberSearchController");
 
         Response<String> response = null;
 
@@ -89,13 +89,14 @@ public class PerfectNumberSearchController {
             Integer startNum = Integer.parseInt(startNumber);
             Integer endNum = Integer.parseInt(endNumber);
             Optional<List<Integer>> listNum = perfectNumberSearchService.FindPerfectNumberWithinRange(startNum, endNum);
+            LOGGER.info("Request send to perfectNumberHandler service");
             List<Integer> finalList = listNum.stream().flatMap(list -> list.stream()).collect(Collectors.toList());
             String listNumbers = "List of perfect Numbers are" + finalList;
             response = Response.okStatus(listNumbers);
         }
 
 
-        LOGGER.info("Request send to perfectNumberHandler service");
+
         return response;
 
     }

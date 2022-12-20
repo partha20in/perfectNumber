@@ -11,7 +11,6 @@ public class Response<T> extends ResponseEntity<T> {
     private Status status;
     private T payload;
     private String details;
-    private static final String OK_MESSAGE = "Email send successfully";
     private static final String BAD_REQUEST_MESSAGE = "Please provide proper request payload";
     private static final String INTERNAL_SERVER_ERROR_MESSAGE = "Internal server error occurred";
 
@@ -51,14 +50,13 @@ public class Response<T> extends ResponseEntity<T> {
     public static Response<String> badRequests() {
         Response<String> response = new Response<String>(BAD_REQUEST_MESSAGE, HttpStatus.BAD_REQUEST);
         response.setStatus(Status.BAD_REQUEST);
-        response.setDetails("Please provide proper payload");
+        response.setDetails(BAD_REQUEST_MESSAGE);
         return response;
     }
 
     public static Response<String> okStatus(String result) {
         Response<String> response = new Response<String>(result, HttpStatus.OK);
         response.setDetails(result);
-        response.setPayload(result);
         response.setStatus(Status.OK);
         return response;
     }
@@ -71,7 +69,6 @@ public class Response<T> extends ResponseEntity<T> {
 
 
     public enum Status {
-        OK, BAD_REQUEST, INTERNAL_SERVER_ERROR, UNAUTHORIZED, VALIDATION_EXCEPTION, EXCEPTION, WRONG_CREDENTIALS, ACCESS_DENIED, NOT_FOUND,
-        DUPLICATE_ENTITY
+        OK, BAD_REQUEST, INTERNAL_SERVER_ERROR
     }
 }

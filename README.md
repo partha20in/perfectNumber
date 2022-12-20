@@ -2,7 +2,8 @@
 
 ### Project Overview ###
 
-To build a simple  microservice running on the JVM and embedded webserver jetty, it manages to take a number or range of numbers and find the Perfect Number list.
+To build a simple  microservice running on the JVM and embedded webserver jetty ,build automation tool Gradle, and it manages to take a 
+number or range of numbers and find the Perfect Number list.
 
 ### Application structure ###
 
@@ -16,9 +17,9 @@ Unit test is implemented in PerfectNumberSearchServiceTest class.
 
 ### Task ###
 API list:
-http://localhost:8080/swagger-ui.html (Swagger api for showing API list and its design)
+http://localhost:8080/swagger-ui.html (Swagger api for displaying API list and its design)
 http://localhost:8080/app/api/v1/perfectNumbers/5 (API to validate a number is Perfect or not)
-http://localhost:8080/app/api/v1/perfectNumbersRange/startNumber/1/endNumber/100 (API to find list of Perfect numbers within a range of numbers)
+http://localhost:8080/app/api/v1/perfectNumbersRange/startNumber/1/endNumber/1000 (API to find list of Perfect numbers within a range of numbers)
 
 Basic login details from web-browser:
 username: worldline

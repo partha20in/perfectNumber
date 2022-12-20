@@ -40,9 +40,16 @@ public class PerfectNumberSearchService {
         return Optional.ofNullable(perfectNumberList);
     }
 
+
+
     public int euler(int p) {
         return (1 << (p - 1)) * ((1 << p) - 1);
     }
+
+    /*public int euler(int p) {
+        int v = (int) (Math.pow(2, p - 1) * (Math.pow(2, p) - 1));
+        return v;
+    }*/
 
 
 }
